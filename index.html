@@ -34,7 +34,7 @@
   <img src="IMG_2339.png" alt="Logo X-Ray" style="width: 150px; margin-bottom: 20px;">
   <h1>X-Ray Tracker</h1>
   <input type="text" id="number" placeholder="Order Number" />
-  <button onclick="Check Status()">Check Status</button>
+  <button onclick="Check Status()">Rastrear</button>
 
   <div id="resultado"></div>
 
@@ -57,7 +57,7 @@
       }
     };
 
-    function Check Status() {
+    function (Rastrear) {
       const numero = document.getElementById('numero').value.trim().toUpperCase();
       const resultado = document.getElementById('resultado');
       if(dados[numero]) {
