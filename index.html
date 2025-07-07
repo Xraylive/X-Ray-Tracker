@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -23,7 +23,7 @@
     margin-left: 10px;
     cursor: pointer;
   }
-  #resultado {
+  #result {
     margin-top: 25px;
     font-size: 18px;
     color: #333;
@@ -31,42 +31,42 @@
 </style>
 </head>
 <body>
-  <img src="IMG_2339.png" alt="Logo X-Ray" style="width: 150px; margin-bottom: 20px;">
+  <img src="IMG_2339.png" alt="X-Ray Logo" style="width: 150px; margin-bottom: 20px;">
   <h1>X-Ray Tracker</h1>
-  <input type="text" id="número" placeholder="Número da encomenda" />
-  <button onclick="Rastrear()">Rastrear</button>
+  <input type="text" id="orderNumber" placeholder="Order Number" />
+  <button onclick="track()">Track</button>
 
-  <div id="resultado"></div>
+  <div id="result"></div>
 
   <script>
-    const dados = {
+    const orders = {
       "XR123456": {
-        "estado": "Enviado",
-        "ultima_atualizacao": "2025-07-07",
-        "comentarios": "A caminho do destino final"
+        "status": "Shipped",
+        "last_update": "2025-07-07",
+        "comments": "On the way to final destination"
       },
       "XR789000": {
-        "estado": "Em processamento",
-        "ultima_atualizacao": "2025-07-06",
-        "comentarios": "Pagamento confirmado, a preparar envio"
+        "status": "Processing",
+        "last_update": "2025-07-06",
+        "comments": "Payment confirmed, preparing shipment"
       },
       "XR000004": {
-        "estado": "Em preparação",
-        "ultima_atualizacao": "2025-07-06",
-        "comentarios": "Pagamento confirmado, a preparar envio"
+        "status": "Preparing",
+        "last_update": "2025-07-06",
+        "comments": "Payment confirmed, preparing shipment"
       }
     };
 
-    function (Rastrear) {
-      const numero = document.getElementById('numero').value.trim().toUpperCase();
-      const resultado = document.getElementById('resultado');
-      if(dados[numero]) {
-        const info = dados[numero];
-        resultado.innerHTML = `<strong>Estado:</strong> ${info.estado}<br/>
-                               <strong>Última atualização:</strong> ${info.ultima_atualizacao}<br/>
-                               <strong>Comentários:</strong> ${info.comentarios}`;
+    function track() {
+      const number = document.getElementById('orderNumber').value.trim().toUpperCase();
+      const result = document.getElementById('result');
+      if(orders[number]) {
+        const info = orders[number];
+        result.innerHTML = `<strong>Status:</strong> ${info.status}<br/>
+                            <strong>Last update:</strong> ${info.last_update}<br/>
+                            <strong>Comments:</strong> ${info.comments}`;
       } else {
-        resultado.innerHTML = '<span style="color:red;">Encomenda não encontrada.</span>';
+        result.innerHTML = '<span style="color:red;">Order not found.</span>';
       }
     }
   </script>
