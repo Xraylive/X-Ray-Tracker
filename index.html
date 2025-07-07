@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>X-Ray Rastreador</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    padding: 30px;
+    text-align: center;
+  }
+  input[type="text"] {
+    width: 250px;
+    padding: 10px;
+    font-size: 16px;
+  }
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  #resultado {
+    margin-top: 25px;
+    font-size: 18px;
+    color: #333;
+  }
+</style>
+</head>
+<body>
+  <h1>Rastreador de Encomendas X-Ray</h1>
+  <input type="text" id="numero" placeholder="Número da encomenda" />
+  <button onclick="rastrear()">Rastrear</button>
+
+  <div id="resultado"></div>
+
+  <script>
+    const dados = {
+      "XR123456": {
+        "estado": "Enviado",
+        "ultima_atualizacao": "2025-07-07",
+        "comentarios": "A caminho do destino final"
+      },
+      "XR789000": {
+        "estado": "Em processamento",
+        "ultima_atualizacao": "2025-07-06",
+        "comentarios": "Pagamento confirmado, a preparar envio"
+      },
+      "XR000004": {
+        "estado": "Em preparação",
+        "ultima_atualizacao": "2025-07-06",
+        "comentarios": "Pagamento confirmado, a preparar envio"
+      }
+    };
+
+    function rastrear() {
+      const numero = document.getElementById('numero').value.trim().toUpperCase();
+      const resultado = document.getElementById('resultado');
+      if(dados[numero]) {
+        const info = dados[numero];
+        resultado.innerHTML = `<strong>Estado:</strong> ${info.estado}<br/>
+                               <strong>Última atualização:</strong> ${info.ultima_atualizacao}<br/>
+                               <strong>Comentários:</strong> ${info.comentarios}`;
+      } else {
+        resultado.innerHTML = '<span style="color:red;">Encomenda não encontrada.</span>';
+      }
+    }
+  </script>
+</body>
+</html>
